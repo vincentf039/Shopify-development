@@ -1,0 +1,47 @@
+{% comment %} DISPLAYING CONTENT {% endcomment %}
+{%for block in section.blocks  %}
+  
+  <h3>{{ block.settings.heading }}</h3>
+  <img src="{{ block.settings.image | img_url:'master'}}"/>
+  <img src="{{ block.settings.image_banner | img_url:'master'}}"/>
+
+{%endfor%}  
+
+{% schema %}
+  {
+    "name": "Brand Page Section",
+    "blocks" : [
+      {
+        "type": "image",
+        "name": "Supplier info",
+        "settings": [
+          {
+            "type": "header",
+            "content": "SUPPLIER INFORMATION"
+          },
+          {
+            "type": "text",
+            "label": "Supplier Name",
+            "id": "heading"
+          },
+          {
+            "type": "image_picker",
+            "label": "Supplier Logo",
+            "id": "image"
+          },
+          {
+            "type": "collection_list",
+            "id": "collection_list",
+            "label": "Supplier Collection Url",
+            "limit": 8
+          },
+          {
+            "type": "image_picker",
+            "label": "Supplier Promotional Banner",
+            "id": "image_banner"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
